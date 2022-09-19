@@ -78,7 +78,7 @@ function searchClicker() {
     cities.push(city);
 
     // cities array length will not go over 5
-    iif(cities.length > 5); {
+    if(cities.length > 5); {
       cities.shift()
     }
 
@@ -99,12 +99,12 @@ function APIcalls() {
   url = "https://api.openweathermap.org/data/2.5/forecast?q=";
   currenturl = "https://api.openweathermap.org/data/2.5/weather?q=";
   APIkey = "&units=imperial&appid=5ad6f017c6ce3eaba0287e11606980ed";
-  queryurl = url + "indianapolis" + APIkey;
+  queryurl = url + city + APIkey;
   current_weather_url = currenturl + city + APIkey;
 
   console.log(current_weather_url);
 
-  $("#name_of_city").text("Today's Weather in Indianapolis");
+  $("#name_of_city").text("Today's Weather in " + city);
   $.ajax({
     url: queryurl,
     method: "GET",
@@ -113,6 +113,7 @@ function APIcalls() {
 
     //iterate through the 40 weather data sets
     for (let i = 0; i < response.list.length; i++) {
+      
       //split function to isolate the time from the time/data aspect of weather data, and only select weather reports for 3pm
       if (response.list[i].dt_txt.split(" ")[1] == "15:00:00") {
         //if time of report is 3pm, populate text areas accordingly
