@@ -37,7 +37,36 @@ function renderButtons(){
   if(cities == null){
     return;
   }
-}
+
+
+    let unique_cities = [...new Set(cities)];
+    for(let i=0; i < unique_cities.length; i++){
+        let cityName = unique_cities[i]; 
+
+        let buttonEl = document.createElement("button");
+        buttonEl.textContent = cityName; 
+        buttonEl.setAttribute("class", "listbtn"); 
+
+        citiesDiv.appendChild(buttonEl);
+        listClicker();
+      }
+    }
+
+    // on click funtion for search history
+    function listClicker(){
+
+      $(".listbtn").on("click", function(event){
+
+
+        console.log("bueler..")
+        event.preventDefault();
+        console.log("did it work?")
+        city = $(this).text().trim();
+        APIcalls();
+      })
+    }
+
+  
 
 
 function APIcalls() {
