@@ -1,5 +1,12 @@
 //'indy === city'
 
+let city = "";
+let url = "";
+let APIkey = "";
+let currenturl = "";
+let queryurl = "";
+
+
 function APIcalls() {
   url = "https://api.openweathermap.org/data/2.5/forecast?q=";
   currenturl = "https://api.openweathermap.org/data/2.5/weather?q=";
