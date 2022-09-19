@@ -7,14 +7,16 @@ let currenturl = "";
 let queryurl = "";
 let citiesDiv = document.getElementById("searched_cities_container");
 let cities = [];
-init(); 
+init();
 searchClicker();
 listClicker();
 
-function init(){
+
+// function pulls saved cities for array
+function init() {
   let saved_cities = JSON.parse(localStorage.getItem("cities"));
 
-  if (saved_cities !== null){
+  if (saved_cities !== null) {
 
     cities = saved_cities
   }
@@ -26,64 +28,79 @@ function init(){
 }
 
 
-function storeCities(){
+function storeCities() {
 
   localStorage.setItem("cities", JSON.stringify(cities));
 }
 
-function renderButtons(){
+function renderButtons() {
 
   citiesDiv.innerHTML = "";
-  if(cities == null){
+  if (cities == null) {
     return;
   }
 
 
-    let unique_cities = [...new Set(cities)];
-    for(let i=0; i < unique_cities.length; i++){
-        let cityName = unique_cities[i]; 
+  let unique_cities = [...new Set(cities)];
+  for (let i = 0; i < unique_cities.length; i++) {
+    let cityName = unique_cities[i];
 
-        let buttonEl = document.createElement("button");
-        buttonEl.textContent = cityName; 
-        buttonEl.setAttribute("class", "listbtn"); 
+    let buttonEl = document.createElement("button");
+    buttonEl.textContent = cityName;
+    buttonEl.setAttribute("class", "listbtn");
 
-        citiesDiv.appendChild(buttonEl);
-        listClicker();
-      }
+    citiesDiv.appendChild(buttonEl);
+    listClicker();
+  }
+}
+
+// on click funtion for search history
+function listClicker() {
+
+  $(".listbtn").on("click", function (event) {
+
+
+    console.log("bueler..")
+    event.preventDefault();
+    console.log("did it work?")
+    city = $(this).text().trim();
+    APIcalls();
+  })
+}
+
+// on click funtion for main search
+function searchClicker() {
+
+  $("#searchbtn").on("click", function (event) {
+    event.preventDefault();
+    city = $(this).prev().val().trim()
+
+    cities.push(city);
+
+    // cities array length will not go over 5
+    iif(cities.length > 5); {
+      cities.shift()
     }
 
-    // on click funtion for search history
-    function listClicker(){
-
-      $(".listbtn").on("click", function(event){
-
-
-        console.log("bueler..")
-        event.preventDefault();
-        console.log("did it work?")
-        city = $(this).text().trim();
-        APIcalls();
-      })
+    if (city == "") {
+      return;
     }
+    APIcalls();
+    storeCities();
+    renderButtons();
+  })
+}
 
-    // on click funtion for main search
-    function searchClicker() {
 
-      $("#searchbtn").on("click", function(event){
-        event.preventDefault();
-        city = $(this).prev().val().trim()
-    }
-
-  
 
 
 function APIcalls() {
-  
+
   url = "https://api.openweathermap.org/data/2.5/forecast?q=";
   currenturl = "https://api.openweathermap.org/data/2.5/weather?q=";
   APIkey = "&units=imperial&appid=5ad6f017c6ce3eaba0287e11606980ed";
   queryurl = url + "indianapolis" + APIkey;
-  current_weather_url = currenturl + "indianapolis" + APIkey;
+  current_weather_url = currenturl + city + APIkey;
 
   console.log(current_weather_url);
 
@@ -115,8 +132,8 @@ function APIcalls() {
         $("#" + day_number + "five_day_icon").attr(
           "src",
           "http://openweathermap.org/img/w/" +
-            response.list[i].weather[0].icon +
-            ".png"
+          response.list[i].weather[0].icon +
+          ".png"
         );
         console.log(response.list[i].dt_txt.split("-"));
         console.log(day_number);
