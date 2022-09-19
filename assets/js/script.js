@@ -5,6 +5,39 @@ let url = "";
 let APIkey = "";
 let currenturl = "";
 let queryurl = "";
+let citiesDiv = document.getElementById("searched_cities_container");
+let cities = [];
+init(); 
+searchClicker();
+listClicker();
+
+function init(){
+  let saved_cities = JSON.parse(localStorage.getItem("cities"));
+
+  if (saved_cities !== null){
+
+    cities = saved_cities
+  }
+
+  renderButtons();
+
+
+
+}
+
+
+function storeCities(){
+
+  localStorage.setItem("cities", JSON.stringify(cities));
+}
+
+function renderButtons(){
+
+  citiesDiv.innerHTML = "";
+  if(cities == null){
+    return;
+  }
+}
 
 
 function APIcalls() {
