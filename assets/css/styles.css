@@ -10,7 +10,7 @@
 .listbtn{
     background-color: #000000;
     color: white;
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     border-radius: 2px; 
     margin-left: 20%;
     margin-right: 20%;
@@ -34,6 +34,14 @@
     background-color: #140b77;
     color: white;
 
+}
+
+#searchbtn{
+
+    background-color: #140b77;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 2px;
 }
 
 
