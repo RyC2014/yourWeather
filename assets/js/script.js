@@ -66,10 +66,19 @@ function renderButtons(){
       })
     }
 
+    // on click funtion for main search
+    function searchClicker() {
+
+      $("#searchbtn").on("click", function(event){
+        event.preventDefault();
+        city = $(this).prev().val().trim()
+    }
+
   
 
 
 function APIcalls() {
+  
   url = "https://api.openweathermap.org/data/2.5/forecast?q=";
   currenturl = "https://api.openweathermap.org/data/2.5/weather?q=";
   APIkey = "&units=imperial&appid=5ad6f017c6ce3eaba0287e11606980ed";
