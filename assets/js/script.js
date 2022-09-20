@@ -94,12 +94,12 @@ function searchClicker() {
 
 // https://api.openweathermap.org/data/2.5/weather?q=&units=imperial&appid=5ad6f017c6ce3eaba0287e11606980ed
 // http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=5ad6f017c6ce3eaba0287e11606980ed
-
+// took away imperial units
 function APIcalls() {
 
   url = "http://api.openweathermap.org/data/2.5/forecast?q=";
   currenturl = "http://api.openweathermap.org/data/2.5/weather?q=";
-  APIkey = "&units=imperial&id=524901&appid=5ad6f017c6ce3eaba0287e11606980ed";
+  APIkey = "&id=524901&appid=5ad6f017c6ce3eaba0287e11606980ed";
   queryurl = url + city + APIkey;
   current_weather_url = currenturl + city + APIkey;
 
