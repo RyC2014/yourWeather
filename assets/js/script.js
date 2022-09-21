@@ -92,7 +92,7 @@ function searchClicker() {
 }
 
 
-// https://api.openweathermap.org/data/2.5/weather?q=&units=imperial&appid=5ad6f017c6ce3eaba0287e11606980ed
+
 // http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=5ad6f017c6ce3eaba0287e11606980ed
 // took away imperial units
 function APIcalls() {
@@ -105,7 +105,7 @@ function APIcalls() {
 
   console.log(current_weather_url);
 
-  $("#name_of_city").text("Today's Weather in " + city);
+  $("#name_of_city").text("Today's weather in " + city);
   $.ajax({
     url: queryurl,
     method: "GET",
