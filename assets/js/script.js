@@ -144,4 +144,20 @@ function APIcalls() {
       }
     }
   });
+
+  // current weather function
+  $.ajax({
+    url:current_weather_url,
+    method: "GET", 
+}).then(function(current_data){
+    console.log(current_data);
+    let temp = Math.round(((current_data.main.temp - 273.15) * 9/5 + 32))
+    console.log("The temperature in " + city + " is: " + temp);
+    $("#today_temp").text("Temperature: " + temp + String.fromCharCode(176)+"F");
+    $("#today_humidity").text("Humidity: " + current_data.main.humidity);
+    $("#today_wind_speed").text("Wind Speed: " + current_data.wind.speed);
+    $("#today_icon_div").attr({"src": "http://openweathermap.org/img/w/" + current_data.weather[0].icon + ".png",
+     "height": "100px", "width":"100px"});
+})
+
 }
