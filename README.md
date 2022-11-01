@@ -7,9 +7,9 @@ Here you will find a simple weather application that allows the user to search f
 
 
 
-[Scheduling app](https://ryc2014.github.io/scheduling-app/)
+[yourWeather](https://ryc2014.github.io/scheduling-app/)
 
-![Screenshot one](/assets/images/Screen%20Shot%202022-11-01%20at%209.20.40%20AM.png"Screenshot one") 
+![Screenshot one](/assets/images/Screen%20Shot%202022-11-01%20at%209.20.40%20AM.png "Screenshot one") 
 
 
 
