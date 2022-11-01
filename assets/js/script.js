@@ -93,8 +93,7 @@ function searchClicker() {
 
 
 
-// http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=5ad6f017c6ce3eaba0287e11606980ed
-// took away imperial units
+
 function APIcalls() {
 
   url = "http://api.openweathermap.org/data/2.5/forecast?q=";
